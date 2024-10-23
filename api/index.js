@@ -9,6 +9,7 @@ import userRouter from "../routes/user_route.js";
 import contractRouter from "../routes/contract_route.js";
 import authRouter from "../routes/auth_route.js";
 import jobApplicationRouter from "../routes/jobapplication_route.js";
+import testRouter from "../routes/test_route.js"; // Add this
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,7 @@ app.use("/users", userRouter);
 app.use("/contracts", contractRouter);
 app.use("/jobApplications", jobApplicationRouter);
 app.use("/auth", authRouter);
+app.use("/test", testRouter); // Add this
 
 app.get("/", (req, res) => {
   return res.send("Welcome to my API");
