@@ -28,7 +28,7 @@ app.use("/jobApplications", jobApplicationRouter);
 app.use("/auth", authRouter);
 
 app.get("/", (req, res) => {
-  return res.json({ message: "Hello world" });
+  return res.send("Welcome to my API");
 });
 
 app.listen(PORT, () => {
