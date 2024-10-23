@@ -1,19 +1,19 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import "./loadenv.mjs";
-import connectDB from "./db/db.js";
-import jobRouter from "./routes/job_route.js";
-import hirerRouter from "./routes/hirer_route.js";
-import userRouter from "./routes/user_route.js";
-import contractRouter from "./routes/contract_route.js";
-import authRouter from "./routes/auth_route.js";
-import jobApplicationRouter from "./routes/jobapplication_route.js";
+import "../loadenv.mjs";
+import connectDB from "../db/db.js";
+import jobRouter from "../routes/job_route.js";
+import hirerRouter from "../routes/hirer_route.js";
+import userRouter from "../routes/user_route.js";
+import contractRouter from "../routes/contract_route.js";
+import authRouter from "../routes/auth_route.js";
+import jobApplicationRouter from "../routes/jobapplication_route.js";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-//connect db
+// Connect to the database
 connectDB();
 
 app.use(cors());
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("listening at port " + PORT);
+  console.log("Listening at port " + PORT);
 });
 
 export default app;
