@@ -7,9 +7,11 @@ const UserSchema = mongoose.Schema(
     phone: { type: String, unique: true, required: true },
     jobTitle: { type: String },
     //url to the pdf file stored
-    cv: { type: String, required: true },
+    //not required
+    cv: { type: String },
     //url to the pdf file stored
-    socialSecurity: { type: String, required: true },
+    //todo check this ?
+    socialSecurity: { type: String },
     //   preferedContractTypes: {
     //     type: [String],
     //     enum: ["CDI", "CDD", "ANAPEC", "INTERIM"],

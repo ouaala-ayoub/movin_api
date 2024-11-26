@@ -6,7 +6,8 @@ const HirerSchema = mongoose.Schema(
     accountId: { type: Schema.Types.ObjectId, ref: "Account" },
     name: requiredString,
     contact: requiredString,
-    image: requiredString,
+    //not required
+    image: { type: String },
     location: requiredString,
     ice: requiredString,
   },

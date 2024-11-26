@@ -6,6 +6,7 @@ const requiredString = { type: String, unique: true, required: true };
 const AccountSchema = mongoose.Schema({
   username: requiredString,
   password: requiredString,
+  // todo status : active / non active
   type: {
     type: String,
     required: true,
