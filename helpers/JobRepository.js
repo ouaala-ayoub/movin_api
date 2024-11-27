@@ -22,7 +22,17 @@ class JobRepository extends BaseRepository {
     const { page: _, ...searchQuery } = query;
 
     return await this.model
-      .find(searchQuery)
+      .find(
+        //todo add another params and fix this check logic
+        searchQuery.q
+          ? {
+              title: {
+                $regex: searchQuery.q,
+                $options: "i",
+              },
+            }
+          : {}
+      )
       .select(select ?? "")
       .populate("hirerId")
       .skip(skip)

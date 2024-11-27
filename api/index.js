@@ -30,7 +30,7 @@ app.use("/auth", authRouter);
 app.use("/test", testRouter); // Add this
 
 app.get("/", (req, res) => {
-  return res.send("Welcome to my movin API");
+  return res.send("Welcome to my JOBLIK API");
 });
 
 app.listen(PORT, () => {

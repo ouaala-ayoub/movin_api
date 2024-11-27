@@ -4,6 +4,8 @@ import AccountRepository from "../helpers/AccountRepository.js";
 
 const userRouter = express.Router();
 
+//todo add middlewares
+
 userRouter
   .route("")
   .get(async (req, res) => {
