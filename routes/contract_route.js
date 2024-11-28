@@ -9,7 +9,7 @@ contractRouter
   .get(async (req, res) => {
     try {
       const queries = req.query || {};
-      const contracts = await ContractRepository.find(queries);
+      const contracts = await ContractRepository.find({ queries });
       return res.json(contracts);
     } catch (error) {
       return res.status(500).json({ error: error.message });

@@ -11,7 +11,7 @@ hirerRouter
   .get(async (req, res) => {
     try {
       const queries = req.query || {};
-      const hirers = await HirerRepository.find(queries);
+      const hirers = await HirerRepository.find({ queries });
       return res.json(hirers);
     } catch (error) {
       return res.status(500).json({ error: error.message });

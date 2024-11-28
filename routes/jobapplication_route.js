@@ -9,7 +9,9 @@ jobApplicationRouter
   //todo remove or limit access to admin
   .get(async (req, res) => {
     try {
-      const applications = await JobApplicationRepository.find();
+      const applications = await JobApplicationRepository.find({
+        populate: "applierId jobId",
+      });
       return res.json(applications);
     } catch (error) {
       return res.status(500).json({ error: error.message });

@@ -11,7 +11,7 @@ userRouter
   .get(async (req, res) => {
     try {
       const queries = req.query || {};
-      const users = await UserRepository.find(queries);
+      const users = await UserRepository.find({ queries });
       return res.json(users);
     } catch (error) {
       return res.status(500).json({ error: error.message });
