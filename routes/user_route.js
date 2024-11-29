@@ -1,6 +1,8 @@
 import express from "express";
 import UserRepository from "../helpers/UserRepository.js";
 import AccountRepository from "../helpers/AccountRepository.js";
+import JobApplicationRespository from "../helpers/JobApplicationRepository.js";
+import { authMiddleware } from "../helpers/auth_helpers.js";
 
 const userRouter = express.Router();
 
@@ -50,6 +52,21 @@ userRouter
       const id = req.params.id;
       const result = await UserRepository.delete(id);
       return res.json(result._id);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  });
+
+userRouter
+  .route("/:id/job_applications")
+  .all(async (req, res, next) => await authMiddleware(req, res, next))
+  .get(async (req, res) => {
+    try {
+      const userId = req.auth._id;
+      const applications = JobApplicationRespository.find({
+        applierId: userId,
+      });
+      return res.json(applications);
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

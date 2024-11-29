@@ -72,6 +72,8 @@ hirerRouter
   .get(async (req, res) => {
     try {
       const hirerId = req.auth._id;
+      console.log(hirerId);
+      //todo check if this is working
       const jobs = await JobRepository.find({ hirerId: hirerId });
       return res.json(jobs);
     } catch (error) {

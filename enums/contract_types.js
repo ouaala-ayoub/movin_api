@@ -1,2 +1,2 @@
 //todo change
-export const contractTypes = ["CDI", "CDD", "ANAPEC", "INTERIM"];
+export const contractTypes = ["CDI", "CDD", "ANAPEC", "INTERIM", "STAGE"];
