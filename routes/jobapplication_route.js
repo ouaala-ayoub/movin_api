@@ -10,7 +10,11 @@ jobApplicationRouter
   .get(async (req, res) => {
     try {
       const applications = await JobApplicationRepository.find({
-        populate: "applierId jobId",
+        populate: {
+          path: "jobId",
+          populate: { path: "hirerId" },
+        },
+        secondPopulate: "applierId",
       });
       return res.json(applications);
     } catch (error) {

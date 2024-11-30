@@ -67,7 +67,10 @@ userRouter
         queries: {
           applierId: userId,
         },
-        populate: "jobId",
+        populate: {
+          path: "jobId",
+          populate: { path: "hirerId" },
+        },
       });
       return res.json(applications);
     } catch (error) {

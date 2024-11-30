@@ -12,11 +12,12 @@ export default class BaseRepository {
     return await this.model.findById(id).select(select ?? "");
   }
 
-  async find({ queries, select, populate }) {
+  async find({ queries, select, populate, secondPopulate }) {
     return await this.model
       .find(queries)
       .select(select ?? "")
-      .populate(populate ?? "");
+      .populate(populate ?? "")
+      .populate(secondPopulate ?? "");
   }
 
   async update(id, data) {
