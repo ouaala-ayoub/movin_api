@@ -63,7 +63,8 @@ userRouter
   .get(async (req, res) => {
     try {
       const userId = req.auth._id;
-      const applications = JobApplicationRespository.find({
+      console.log(userId);
+      const applications = await JobApplicationRespository.find({
         queries: {
           applierId: userId,
         },
@@ -71,7 +72,9 @@ userRouter
           path: "jobId",
           populate: { path: "hirerId" },
         },
+        secondPopulate: "applierId",
       });
+      console.log(applications);
       return res.json(applications);
     } catch (error) {
       return res.status(500).json({ error: error.message });
