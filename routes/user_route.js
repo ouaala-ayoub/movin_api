@@ -64,7 +64,10 @@ userRouter
     try {
       const userId = req.auth._id;
       const applications = JobApplicationRespository.find({
-        applierId: userId,
+        queries: {
+          applierId: userId,
+        },
+        populate: "jobId",
       });
       return res.json(applications);
     } catch (error) {
