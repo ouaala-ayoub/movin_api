@@ -75,9 +75,7 @@ hirerRouter
       console.log(hirerId);
       //todo check if this is working
       const jobs = await JobRepository.find({
-        queries: {
-          hirerId: hirerId,
-        },
+        hirerId: hirerId,
       });
       return res.json(jobs);
     } catch (error) {

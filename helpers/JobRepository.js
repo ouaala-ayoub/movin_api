@@ -30,6 +30,9 @@ class JobRepository extends BaseRepository {
     if (searchQuery.cities) {
       builder["location"] = { $in: searchQuery.cities.split(",") };
     }
+    if (searchQuery.hirerId) {
+      builder["hirerId"] = searchQuery.hirerId;
+    }
 
     return await this.model
       .find(
