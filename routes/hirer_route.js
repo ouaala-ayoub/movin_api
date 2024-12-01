@@ -74,7 +74,11 @@ hirerRouter
       const hirerId = req.auth._id;
       console.log(hirerId);
       //todo check if this is working
-      const jobs = await JobRepository.find({ hirerId: hirerId });
+      const jobs = await JobRepository.find({
+        queries: {
+          hirerId: hirerId,
+        },
+      });
       return res.json(jobs);
     } catch (error) {
       return res.status(500).json({ error: error.message });
